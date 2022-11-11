@@ -8,11 +8,25 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Resource",
+"class": "Settings",
+"language": "GDScript",
+"path": "res://settings.gd"
+} ]
+_global_script_class_icons={
+"Settings": ""
+}
+
 [application]
 
 config/name="Dynamic Theme Demo"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+g="*res://global.gd"
 
 [gui]
 
