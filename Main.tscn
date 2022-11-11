@@ -1,8 +1,117 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 
-[node name="Main" type="Control"]
+[sub_resource type="ButtonGroup" id=1]
+resource_name = "Options"
+
+[node name="Main" type="CenterContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
+
+[node name="VBox" type="VBoxContainer" parent="."]
+margin_left = 427.0
+margin_top = 143.0
+margin_right = 597.0
+margin_bottom = 457.0
+rect_min_size = Vector2( 170, 0 )
+custom_constants/separation = 20
+
+[node name="Grid" type="GridContainer" parent="VBox"]
+margin_right = 170.0
+margin_bottom = 100.0
+custom_constants/vseparation = 20
+custom_constants/hseparation = 20
+columns = 2
+
+[node name="Label" type="Label" parent="VBox/Grid"]
+margin_top = 3.0
+margin_right = 110.0
+margin_bottom = 17.0
+text = "Background color"
+
+[node name="BackgroundColor" type="ColorPickerButton" parent="VBox/Grid"]
+margin_left = 130.0
+margin_right = 162.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 32, 0 )
+
+[node name="Label2" type="Label" parent="VBox/Grid"]
+margin_top = 43.0
+margin_right = 110.0
+margin_bottom = 57.0
+text = "Foreground color"
+
+[node name="ForegroundColor" type="ColorPickerButton" parent="VBox/Grid"]
+margin_left = 130.0
+margin_top = 40.0
+margin_right = 162.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 32, 0 )
+
+[node name="Label3" type="Label" parent="VBox/Grid"]
+margin_top = 83.0
+margin_right = 110.0
+margin_bottom = 97.0
+text = "Button color"
+
+[node name="ButtonColor" type="ColorPickerButton" parent="VBox/Grid"]
+margin_left = 130.0
+margin_top = 80.0
+margin_right = 162.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 32, 0 )
+
+[node name="PanelContainer" type="PanelContainer" parent="VBox"]
+margin_top = 120.0
+margin_right = 170.0
+margin_bottom = 314.0
+
+[node name="VBox" type="VBoxContainer" parent="VBox/PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 163.0
+margin_bottom = 187.0
+custom_constants/separation = 20
+
+[node name="Button" type="Button" parent="VBox/PanelContainer/VBox"]
+margin_right = 156.0
+margin_bottom = 20.0
+text = "Button"
+
+[node name="CheckButton" type="CheckButton" parent="VBox/PanelContainer/VBox"]
+margin_top = 40.0
+margin_right = 156.0
+margin_bottom = 80.0
+text = "Check"
+
+[node name="VB" type="VBoxContainer" parent="VBox/PanelContainer/VBox"]
+margin_top = 100.0
+margin_right = 156.0
+margin_bottom = 180.0
+
+[node name="CheckBox" type="CheckBox" parent="VBox/PanelContainer/VBox/VB"]
+margin_right = 156.0
+margin_bottom = 24.0
+pressed = true
+group = SubResource( 1 )
+text = "Option A"
+
+[node name="CheckBox2" type="CheckBox" parent="VBox/PanelContainer/VBox/VB"]
+margin_top = 28.0
+margin_right = 156.0
+margin_bottom = 52.0
+group = SubResource( 1 )
+text = "Option B"
+
+[node name="CheckBox3" type="CheckBox" parent="VBox/PanelContainer/VBox/VB"]
+margin_top = 56.0
+margin_right = 156.0
+margin_bottom = 80.0
+group = SubResource( 1 )
+text = "Option C"
+
+[connection signal="color_changed" from="VBox/Grid/BackgroundColor" to="." method="_on_BackgroundColor_color_changed"]
+[connection signal="color_changed" from="VBox/Grid/ForegroundColor" to="." method="_on_ForegroundColor_color_changed"]
+[connection signal="color_changed" from="VBox/Grid/ButtonColor" to="." method="_on_ButtonColor_color_changed"]
